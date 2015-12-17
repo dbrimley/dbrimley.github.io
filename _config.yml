@@ -1,0 +1,32 @@
+title: Dave Brimley
+description: Thoughts on Distributed Systems and In Memory Data Grids (IMDG)
+
+url: http://davebrimley.com
+baseurl: ""
+paginate_path: "blog/page:num/"
+permalink: blog/:title/
+
+markdown: redcarpet
+highlighter: pygments
+gems: ["jekyll-paginate","jekyll-sitemap"]
+paginate: 5
+paginate_path: "page:num"
+
+navigation:
+ - title: Home
+   url: /index.html
+ - title: Talks
+   url: /talks
+ - title: Code
+   url: http://github.com/dbrimley
+ - title: About
+   url: /about
+ - title: Contact
+   url: /contact
+
+social:
+   github: dbrimley
+   twitter: dbrimley
+   email: david@craftedbytes.com
+
+google_analytics: "UA-58263416-1"
