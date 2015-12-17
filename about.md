@@ -5,8 +5,8 @@ title: About Crafted Bytes
 
 <div class="post">
 	<h1 class="pageTitle">About Dave Brimley</h1>
-	<p class="intro">Crafted Bytes is the personal website of David Brimley.  That's me, so enough of writing in the third person.  I travel the world helping people make sense of In Memory Data Grids.  If you're about to embark on a project that is converting between IMDG vendors or if you need some training, I may be able to help you.</p>
-	<p>I've been working with IMDGs like Hazelcast, Oracle Coherence and Gemfire for some time.</p>
+	<p class="intro">I travel the world helping people make sense of In Memory Data Grids via my consulting company, Crafted Bytes.  If you're about to embark on a project that is converting between IMDG vendors (maybe Coherence to Hazelcast) or if you need some IMDG training, I may be able to help you.</p>
+	<p>I've been working with IMDGs like Hazelcast, Oracle Coherence and Gemfire for some time, very nearly 10 years.  I've also given talks about IMDGs at major tech conferences.</p>
   <p>My current areas of interest are in Distributed Computing, In Memory Data Grids and High Frequency Trading Systems.</p>
 	<h2>My Resume</h2>
   <p>20 years experience in the IT industry, 16 of which have been spent in the Investment Banking Sector (Fixed Income and Equities).  My primary expertise is server side Java, developing highly concurrent, high throughput systems.  </p>
