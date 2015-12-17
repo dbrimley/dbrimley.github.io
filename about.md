@@ -35,14 +35,14 @@ title: About Dave Brimley
   <tbody>
     <tr>
       <td>Nomura</td>
-      <td style="text-align: left">Senior Java Developer / Team Lead</td>
+      <td style="text-align: left">Senior Java Developer / Team Lead (Gemfire)</td>
       <td style="text-align: left">Apr 2010 - Dec 2013</td>
     </tr>
   </tbody>
   <tbody>
     <tr>
       <td>HSBC</td>
-      <td style="text-align: left">Senior Java Developer / Team Lead</td>
+      <td style="text-align: left">Senior Java Developer / Team Lead (Coherence)</td>
       <td style="text-align: left">Aug 2006 – Apr 2010</td>
     </tr>
   </tbody>
