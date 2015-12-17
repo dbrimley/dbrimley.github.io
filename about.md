@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About Crafted Bytes
+title: About Dave Brimley
 ---
 
 <div class="post">
