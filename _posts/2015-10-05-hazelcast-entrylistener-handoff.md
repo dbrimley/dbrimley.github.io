@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Hazelcast LDAP Security"
+title: "Hazelcast Entry Listener Hand-off"
 modified:
 categories: blog
-excerpt: Hazelcast uses standard JAAS (Java Authentication and Authorization Service) interfaces to provide security around structures and operations.
-tags: []
+excerpt: Hazelcast Entry Listeners are run on the eventing thread pool.  It's generally not recommended to have long running tasks execute here, in this article I'll present a generic execution framework for handling events.
 comments: true
-image: ldap.png
-date: 2015-12-16T13:33:13+00:00
+tags: []
+image: handoff.jpg
+date: 2015-10-05T11:20:13+00:00
 ---
 
 One useful feature of Hazelcast is the ability to register a callback for just about any conceivable event that may occur in a cluster.  This ranges from mutations on the various data structures right through to listening for members leaving and joining the cluster.
