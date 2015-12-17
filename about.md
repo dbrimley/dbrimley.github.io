@@ -5,7 +5,7 @@ title: About Dave Brimley
 
 <div class="post">
 	<h1 class="pageTitle">About Dave Brimley</h1>
-	<p class="intro">I travel the world helping people make sense of In Memory Data Grids via my consulting company, <a href="www.craftedbytes.com">Crafted Bytes</a>.  If you're about to embark on a project that is converting between IMDG vendors (maybe Coherence to Hazelcast) or if you need some IMDG training, I may be able to help you.</p>
+	<p class="intro">I travel the world helping people make sense of In Memory Data Grids via my consulting company, <a href="http://www.craftedbytes.com">Crafted Bytes</a>.  If you're about to embark on a project that is converting between IMDG vendors (maybe Coherence to Hazelcast) or if you need some IMDG training, I may be able to help you.</p>
 	<p>I've been working with IMDGs like Hazelcast, Oracle Coherence and Gemfire for some time, very nearly 10 years.  I've also given talks about IMDGs at major tech conferences.</p>
   <p>My current areas of interest are in Distributed Computing, In Memory Data Grids and High Frequency Trading Systems.</p>
 	<h2>My Resume</h2>
