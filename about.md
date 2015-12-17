@@ -29,7 +29,7 @@ title: About Dave Brimley
     <tr>
       <td>Hazelcast</td>
       <td style="text-align: left">Senior Solutions Architect</td>
-      <td style="text-align: left">Jan 2014 - Current</td>
+      <td style="text-align: left">Jan 2014 - December 2015</td>
     </tr>
   </tbody>
   <tbody>
