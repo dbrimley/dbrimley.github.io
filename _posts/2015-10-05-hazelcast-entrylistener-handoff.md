@@ -142,7 +142,7 @@ Some implementations can make use of the [EntryEventTypeProcessorFactory](/https
 
 ## ThreadPoolEntryEventService
 
-![EntryEventService](/images/EntryEventService.jpg)
+![EntryEventService](/assets/img/EntryEventService.jpg)
 
 There is currently one implementation of an EntryEventService, called the [ThreadPoolEntryEventService](https://github.com/dbrimley/hazelcast-entrylistener-handoff/blob/master/src/main/java/com/hazelcast/samples/entrylistener/handoff/service/ThreadPoolEntryEventService.java), it provides the following features :-
 

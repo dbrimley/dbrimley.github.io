@@ -24,7 +24,7 @@ At a high level a JAAS backed authorisation and authentication process would exe
 
 The following diagram describes these operations.
 
-![Hazelcast LDAP Security Workflow](/images/hazelcast-ldap-security.png)
+![Hazelcast LDAP Security Workflow](/assets/img/hazelcast-ldap-security.png)
 
 ## The Example LDAP Secured Hazelcast Cluster
 
