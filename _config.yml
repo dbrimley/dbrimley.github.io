@@ -17,8 +17,6 @@ navigation:
    url: /index.html
  - title: Talks
    url: /talks
- - title: Code
-   url: http://github.com/dbrimley
  - title: About
    url: /about
  - title: Contact

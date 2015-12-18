@@ -11,7 +11,7 @@ Below you'll find links to my talks, some with video.
 
 ___
 
-# Docklands London Java User Group (November 2015) - Distributed Java Systems in Minutes with 
+# Docklands London Java User Group (November 2015) - Distributed Java Systems in Minutes with Hazelcast
 
 [Slides](http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.pdf)
 [Video](http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.mp4)
