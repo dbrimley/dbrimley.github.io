@@ -41,23 +41,23 @@ For example if you are installing the 3.5.4 jars to your local maven repo you wo
 
 {% highlight xml %}
 mvn org.apache.maven.plugins:maven-install-plugin:2.5.1:install-file 
--Dfile=/Users/dbrimley/Dev/hazelcast/hazelcast-enterprise-3.6-EA/lib/hazelcast-enterprise-client-3.5.4.jar 
+-Dfile=path-to/hazelcast-enterprise-client-3.5.4.jar 
 -DgroupId=com.hazelcast 
 -DartifactId=hazelcast-enterprise-client 
 -Dversion=3.5.4 
 -Dpackaging=jar 
--DlocalRepositoryPath=/Users/myName/.m2/repository
+-DlocalRepositoryPath=path-to/.m2/repository
 
 mvn org.apache.maven.plugins:maven-install-plugin:2.5.1:install-file 
--Dfile=/Users/dbrimley/Dev/hazelcast/hazelcast-enterprise-3.5.4/lib/hazelcast-enterprise-3.5.4.jar 
+-Dfile=path-to/hazelcast-enterprise-3.5.4.jar 
 -DgroupId=com.hazelcast 
 -DartifactId=hazelcast-enterprise 
 -Dversion=3.5.4 
 -Dpackaging=jar 
--DlocalRepositoryPath=/Users/myName/.m2/repository
+-DlocalRepositoryPath=path-to/.m2/repository
 {% endhighlight %}
 
-### Introduction to Hazelcaast & JAAS
+### Introduction to Hazelcast & JAAS
 
 The entire process is handled with the help of [JAAS (Java Authentication and Authorization Service)](https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service) compliant interfaces.
 
