@@ -169,6 +169,10 @@ public void initialize(Subject subject,
 }
 {% endhighlight %}
 
+### UserStore & LDAP
+
+When we initialize the LoginModule we pass it a UserStore in the options Map class.
+
 ### Lifecycle Phases
 
 As mentioned above the LoginModule interface has distinct lifecycle methods that are called by Hazelcast.
