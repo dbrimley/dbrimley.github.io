@@ -171,9 +171,32 @@ public void initialize(Subject subject,
 
 ### UserStore & LDAP
 
-When we initialize the LoginModule we pass it a UserStore in the options Map class.
+When we initialize the LoginModule we pass it a [UserStore](https://github.com/dbrimley/hazeldap/blob/master/hazeldap-server/src/main/java/com/craftedbytes/hazelcast/UserStore.java) in the options Map class.
 
-### Lifecycle Phases
+The UserStore is an abstraction that provides two services.
+
+1. The Ability to authenticate a user given a username and a password
+2. The Ability to return a set of roles for a given username.
+
+{% highlight java %}
+package com.craftedbytes.hazelcast;
+
+import java.util.List;
+
+/**
+ * A UserStore that can perform authentication and retrieve roles for a user.
+ */
+public interface UserStore {
+
+    boolean authenticate(String username, String password);
+
+    List<String> getRoles(String username);
+}
+{% endhighlight %}
+
+We have an implementation of this [UserStore](https://github.com/dbrimley/hazeldap/blob/master/hazeldap-server/src/main/java/com/craftedbytes/hazelcast/UserStore.java) that is connects to an LDAP Server called [LdapUserStore](https://github.com/dbrimley/hazeldap/blob/master/hazeldap-server/src/main/java/com/craftedbytes/hazelcast/ldap/LdapUserStore.java), this implementation makes use of the [Spring Ldap](http://projects.spring.io/spring-ldap/)
+
+#### Lifecycle Phases
 
 As mentioned above the LoginModule interface has distinct lifecycle methods that are called by Hazelcast.
 
