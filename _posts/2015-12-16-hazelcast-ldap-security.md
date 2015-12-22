@@ -110,7 +110,9 @@ HazelcastInstance hazelcastInstance = HazelcastClient.newHazelcastClient(clientC
 
 ## Enter the JAAS LoginModule!
 
-It's time to introduce the [LoginModule](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASLMDevGuide.html) and configure the Hazelcast Cluster to use it when a client connects.
+It's time to introduce our implementation of the [LoginModule](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASLMDevGuide.html) Interface and configure the Hazelcast Cluster to use it when a client connects.
+
+Our Implementation is called [ClientLoginModule](https://github.com/dbrimley/hazeldap/blob/master/hazeldap-server/src/main/java/com/craftedbytes/hazelcast/security/ClientLoginModule.java)
 
 You can have multiple LoginModules chained together, in this example we've configured just one using Spring Beans...
 
@@ -147,7 +149,9 @@ You can have multiple LoginModules chained together, in this example we've confi
 
 #### Initialize
 
-Hazelcast first calls the initialize method, this called when the client connection is detected.  Hazelcast passes 4 classes.
+Hazelcast first calls the initialize method when the client connection is detected.  
+
+Hazelcast passes 4 classes.
 
 1. **Subject** : Is the class that will be populated with Principals (e.g. Roles) upon successful login.
 2. **CallbackHandler** : Is used to retrieve the Credentials passed by the client.
