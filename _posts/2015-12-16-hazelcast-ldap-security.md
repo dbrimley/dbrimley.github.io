@@ -10,7 +10,54 @@ image: ldap.png
 date: 2015-12-16T13:33:13+00:00
 ---
 
-Hazelcast has the ability to authenticate users of a cluster and then to authorise their access to data structures and operations based on roles held by a user.  This authentication and authorisation occurs within the cluster when a client connects for the first time.  These features are present in Hazelcast Enterprise.
+Hazelcast has the ability to authenticate users of a cluster and then to authorise their access to data structures and operations based on roles held by a user.  This authentication and authorisation occurs within the cluster when a client connects for the first time.  
+
+### Before we begin...
+
+**You can find the full code samples at my [github repository](http://github.com/dbrimley/hazeldap)**
+
+These features are present in Hazelcast Enterprise, to get started you'll have to grab yourself a trial version from [hazelcast.com](https://hazelcast.com/hazelcast-enterprise-download/trial/).
+
+You'll get two things from the website...
+
+1. A license key.
+2. The Hazelcast Enterprise JARS.
+
+#### Configure the License Key
+
+The project samples and hazelcast are bootstrapped using Spring, to configure the license you'll need to edit the **hazelcast-server/src/main/resources/application-context.properties** file.
+
+{% highlight xml %}
+hazelcast.group.config.name=hazeldap
+hazelcast.group.config.password=hazeldap-password
+hazelcast.license.key=<!-- GET LICENCE FROM https://hazelcast.com/hazelcast-enterprise-download/trial/ -->
+{% endhighlight %}
+
+#### Add the Enterprise Jars to Maven Repo
+
+Next you'll need to add the enterprise jars you downloaded and place them into your local maven repository.  You can do this using the **maven-install-plugin**
+
+For example if you are installing the 3.5.4 jars to your local maven repo you would execute the following...
+
+{% highlight xml %}
+mvn org.apache.maven.plugins:maven-install-plugin:2.5.1:install-file 
+-Dfile=/Users/dbrimley/Dev/hazelcast/hazelcast-enterprise-3.6-EA/lib/hazelcast-enterprise-client-3.5.4.jar 
+-DgroupId=com.hazelcast 
+-DartifactId=hazelcast-enterprise-client 
+-Dversion=3.5.4 
+-Dpackaging=jar 
+-DlocalRepositoryPath=/Users/myName/.m2/repository
+
+mvn org.apache.maven.plugins:maven-install-plugin:2.5.1:install-file 
+-Dfile=/Users/dbrimley/Dev/hazelcast/hazelcast-enterprise-3.5.4/lib/hazelcast-enterprise-3.5.4.jar 
+-DgroupId=com.hazelcast 
+-DartifactId=hazelcast-enterprise 
+-Dversion=3.5.4 
+-Dpackaging=jar 
+-DlocalRepositoryPath=/Users/myName/.m2/repository
+{% endhighlight %}
+
+### Introduction to Hazelcaast & JAAS
 
 The entire process is handled with the help of [JAAS (Java Authentication and Authorization Service)](https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service) compliant interfaces.
 
@@ -60,6 +107,81 @@ clientConfig.setCredentials(new UsernamePasswordCredentials(username, password))
 clientConfig.getCredentials().setEndpoint(thisClientIP);
 HazelcastInstance hazelcastInstance = HazelcastClient.newHazelcastClient(clientConfig);
 {% endhighlight %}
+
+## Enter the JAAS LoginModule!
+
+It's time to introduce the [LoginModule](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASLMDevGuide.html) and configure the Hazelcast Cluster to use it when a client connects.
+
+You can have multiple LoginModules chained together, in this example we've configured just one using Spring Beans...
+
+{% highlight xml %}
+    <bean id="hazelcast.instance" class="com.hazelcast.core.Hazelcast" factory-method="newHazelcastInstance">
+        <constructor-arg>
+            <bean class="com.hazelcast.config.Config">
+                ...
+                <property name="securityConfig">
+                    <bean class="com.hazelcast.config.SecurityConfig">
+                        <property name="enabled" value="true"/>
+                        <property name="clientLoginModuleConfigs">
+                            <list>
+                                <bean class="com.hazelcast.config.LoginModuleConfig">
+                                    <property name="className"
+                                              value="com.craftedbytes.hazelcast.security.ClientLoginModule"/>
+                                    <property name="usage" value="REQUIRED"/>
+                                    <property name="properties">
+                                        <map>
+                                            <entry key="userStore" value-ref="userStore"/>
+                                        </map>
+                                    </property>
+                                </bean>
+                            </list>
+                        </property>
+                        ...
+                    </bean>
+                </property>
+            </bean>
+        </constructor-arg>
+    </bean>
+{% endhighlight %}
+
+
+#### Initialize
+
+Hazelcast first calls the initialize method, this called when the client connection is detected.  Hazelcast passes 4 classes.
+
+1. **Subject** : Is the class that will be populated with Principals (e.g. Roles) upon successful login.
+2. **CallbackHandler** : Is used to retrieve the Credentials passed by the client.
+3. **SharedState** : Is a Map that can be used to pass state between different LoginModules
+4. **Options** : Is used in this instances to pass in helper classes tot he LoginModule, in our case we will be passing in the UserStore which in turn connects to our LDAP server.
+
+{% highlight java %}
+public void initialize(Subject subject, 
+                       CallbackHandler callbackHandler, 
+                       Map<String, ?> sharedState, 
+                       Map<String, ?> options) {
+    this.subject = subject;
+    this.callbackHandler = callbackHandler;
+    this.userStore = (UserStore) options.get("userStore");
+}
+{% endhighlight %}
+
+### Lifecycle Phases
+
+As mentioned above the LoginModule interface has distinct lifecycle methods that are called by Hazelcast.
+
+1. login
+2. commit
+3. abort
+4. logout
+
+We'll look at each of these phases next.
+
+
+
+
+
+
+
 
 
 
