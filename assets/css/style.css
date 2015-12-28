@@ -1262,7 +1262,7 @@ dd {
         transform-origin: bottom left
     }
     .container {
-        max-width: 800px;
+        max-width: 900px;
         margin-left: auto;
         margin-right: auto;
         padding: 0
