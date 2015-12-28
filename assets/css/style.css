@@ -823,7 +823,7 @@ object {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 610px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px
@@ -1262,7 +1262,7 @@ dd {
         transform-origin: bottom left
     }
     .container {
-        max-width: 1600px;
+        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
         padding: 0
