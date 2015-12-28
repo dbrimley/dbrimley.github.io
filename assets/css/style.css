@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,800);
 @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
 html {
-    font-size: 100%;
+    font-size: 75%;
     line-height: 1.5em
 }
 
@@ -823,7 +823,7 @@ object {
 }
 
 .container {
-    max-width: 610px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px
@@ -1262,7 +1262,7 @@ dd {
         transform-origin: bottom left
     }
     .container {
-        max-width: 800px;
+        max-width: 1600px;
         margin-left: auto;
         margin-right: auto;
         padding: 0
