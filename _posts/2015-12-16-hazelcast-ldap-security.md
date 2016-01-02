@@ -450,9 +450,6 @@ cn: Joe Bloggs
 sn: Joe
 ou: people
 ```
-
-
-
 ##### Running your own LDAP Server
 
 If you do not wish to use the Vagrant approach you can run your own LDAP server and use the LDIF file found at **src/main/vagrant/ldif/usergroups.ldif**.  The LDIF file describes the LDAP tree and the data found within it.
@@ -460,6 +457,20 @@ If you do not wish to use the Vagrant approach you can run your own LDAP server 
 If you do set-up your own server you'll also have to edit the connection details for where the Hazelcast Cluster Member looks for its LDAP server.  These are at **hazeldap/hazeldap-server/src/main/resources/application-context.properties**
 
 I would recommend using [OpenLDAP](http://www.openldap.org/)
+
+#### Step 3 : Hazelcast Cluster
+
+Now you should start the Hazelcast cluster members they will connect to your LDAP server.
+
+`com.craftedbytes.hazelcast.Bootstrap` has a main method that starts a Hazelcast Member and uses configuration found in `resources/application-context.xml`
+
+#### Step 4 : Hazelcast Client
+
+`com.craftedbytes.hazelcast.Client` runs and attempts 2 different client connections, one as `jbloggs` and the other as `dbrimley`.  You should observe that some actions succeed and others fall foul of authorisation.
+
+## Implementation Overview
+
+Let's look in a little more detail at how the authentication and authorisation actually works.
 
 ### Client Credentials
 
@@ -635,7 +646,7 @@ This phase can be broken down into 2 steps.
 
 This phase runs when all the LoginModules have passed.
 
-In this phase we obtain the Roles for the authenticated User by again calling the `UserStore`.  We place the a `Principal` object for each role onto the `Subject`.
+In this phase we obtain the Roles for the authenticated User by again calling the `UserStore`.  We place a `Principal` object for each role onto the `Subject`.
 
 This `Subject` is then used whenever an action/request is made to hazelcast.
 
