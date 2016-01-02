@@ -457,7 +457,9 @@ If you do not wish to use the Vagrant approach you can run your own LDAP server 
 
 If you do set-up your own server you'll also have to edit the connection details for where the Hazelcast Cluster Member looks for its LDAP server.  These are at **hazeldap/hazeldap-server/src/main/resources/application-context.properties**
 
-I would recommend using [OpenLDAP](http://www.openldap.org/)
+I would recommend using [OpenLDAP](http://www.openldap.org/) or [Apache Open Directory](https://directory.apache.org/).
+
+A really useful tool is the [Apache Directory Studio](https://directory.apache.org/studio/), this is a GUI that allows you to connect to LDAP instances and view the data contained within.  You can import/export LDIF data and also start LDAP server instances such as ApacheDS itself or even connect to the running Vagrant based OpenLDAP server.
 
 #### Step 3 : Hazelcast Cluster
 
