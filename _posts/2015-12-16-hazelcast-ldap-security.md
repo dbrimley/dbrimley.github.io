@@ -36,6 +36,7 @@ Now observe the lifecycle phases of the **LoginModule**, in the diagram above we
 
 Here's the JAAS **LoginModule** interface in its entirety.
 
+#####javax.security.auth.spi.LoginModule.java
 ```java
 package javax.security.auth.spi;
 
@@ -280,12 +281,9 @@ You'll get two things from the website...
 
 ##### Configure the License Key
 
-The project samples and hazelcast are bootstrapped using Spring, to configure the license you'll need to edit the following file...
+The project samples and hazelcast are bootstrapped using Spring, to configure the license you'll need to edit the following file, changing the `hazelcast.license.key` value...
 
-`hazeldap-server/src/main/resources/application-context.properties`
-
-changing the `hazelcast.license.key` value...
-
+#####hazeldap-server/src/main/resources/application-context.properties
 ```
 hazelcast.group.config.name=hazeldap
 hazelcast.group.config.password=hazeldap-password
@@ -298,6 +296,7 @@ Next you'll need to add the enterprise jars you downloaded and place them into y
 
 For example if you are installing the 3.5.4 jars to your local maven repo you would execute the following on your command line, remembering to change the `-Dfile` and `-DlocalRepositoryPath` values...
 
+#####Installing Enterprise Jars using Maven
 ```XML
 mvn org.apache.maven.plugins:maven-install-plugin:2.5.1:install-file 
 -Dfile=path-to/hazelcast-enterprise-client-3.5.4.jar 
@@ -335,6 +334,7 @@ If you have everything installed correctly you'll just need to cd to `hazeldap-s
 
 If all has gone to plan the last few lines of output to the terminal should be something like this...
 
+#####Vagrant console output
 ```
 ==> default: adding new entry "dc=craftedbytes,dc=com"
 ==> default: 
@@ -375,6 +375,7 @@ Lets take a look a little more closely at the LDIF file that contains the User a
 
 You'll notice in the LDIF file below that each user also has a hashed password, for example `dbrimley` password is `password1`.  You can create an SHA hash by the command line `slappasswd -h {SHA} -s password1`.  You'll need OpenLDAP installed to achieve this.
 
+#####hazeldap-server/src/main/vagrant/ldif/usergroups.ldif
 ```
 dn: dc=craftedbytes,dc=com
 objectclass: dcObject
@@ -482,7 +483,7 @@ UsernamePasswordCredentials takes a String Username and a String Password.
 
 **Make sure you use [SSL on client to cluster connections](http://docs.hazelcast.org/docs/latest/manual/html-single/index.html#ssl) when you are sending clear text passwords over the wire.**
 
-####com.hazelcast.security.Credentials
+#####com.hazelcast.security.Credentials
 ```java
 package com.hazelcast.security;
 import java.io.Serializable;
@@ -496,7 +497,7 @@ public interface Credentials extends Serializable {
 Now we have our Credentials object we need to pass it on with our initial Client connection into the Hazelcast cluster, the follow code samples demonstrates this...
 
 
-####Sending Credentials on Client Connection
+#####Sending Credentials on Client Connection
 ```java
 ClientConfig clientConfig = new ClientConfig();
 clientConfig.setCredentials(new UsernamePasswordCredentials(username, password));
@@ -508,12 +509,12 @@ HazelcastInstance hazelcastInstance = HazelcastClient.newHazelcastClient(clientC
 
 It's time to introduce our implementation of the [LoginModule](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASLMDevGuide.html) Interface and configure the Hazelcast Cluster to use it when a client connects. Our Implementation is called [ClientLoginModule](https://github.com/dbrimley/hazeldap/blob/master/hazeldap-server/src/main/java/com/craftedbytes/hazelcast/security/ClientLoginModule.java). You can have multiple LoginModules chained together and you can configure each module to be required to pass or optional.
 
-
+#####Spring Hazelcast Instance Configuration
 ```xml
 <bean id="hazelcast.instance" class="com.hazelcast.core.Hazelcast" factory-method="newHazelcastInstance">
     <constructor-arg>
         <bean class="com.hazelcast.config.Config">
-            <!-- Other Config ommited from this example -->
+            <!-- Other Config omitted from this example -->
             <property name="securityConfig">
                 <bean class="com.hazelcast.config.SecurityConfig">
                     <property name="enabled" value="true"/>
@@ -552,6 +553,7 @@ Hazelcast passes 4 classes.
 3. **SharedState** : Is a Map that can be used to pass state between different LoginModules
 4. **Options** : Is used in this instances to pass in helper classes tot he LoginModule, in our case we will be passing in the UserStore which in turn connects to our LDAP server.
 
+#####com.craftedbytes.hazelcast.security.ClientLoginModule
 ```java
 public void initialize(Subject subject, 
                        CallbackHandler callbackHandler, 
@@ -572,11 +574,8 @@ The UserStore is an abstraction that provides two services.
 1. The Ability to authenticate a user given a username and a password
 2. The Ability to return a set of roles for a given username.
 
+#####com.craftedbytes.hazelcast.UserStore
 ```java
-package com.craftedbytes.hazelcast;
-
-import java.util.List;
-
 /**
  * A UserStore that can perform authentication and retrieve roles for a user.
  */
@@ -599,6 +598,7 @@ This phase can be broken down into 2 steps.
 1.  We get the `Credentials` object that contains the username and password.
 2.  We then call `authenticate` on our `UserStore`.
 
+#####com.craftedbytes.hazelcast.security.ClientLoginModule
 ```java
      /**
      * Login is called when this module is executed.
@@ -650,6 +650,7 @@ In this phase we obtain the Roles for the authenticated User by again calling th
 
 This `Subject` is then used whenever an action/request is made to hazelcast.
 
+#####com.craftedbytes.hazelcast.security.ClientLoginModule
 ```java
   /**
      * Commit is called when all of the modules in the chain have passed.
@@ -691,6 +692,7 @@ You can see from the snippet below that we've created two role mappings against 
 
 There is than another role, `cn: Administrators` that is able to perform all commands on the map.
 
+#####hazeldap-server/src/main/resources/application-context.xml
 ```XML
 <property name="clientPermissionConfigs">
      <set>
