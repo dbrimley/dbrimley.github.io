@@ -13,6 +13,8 @@ gems: ["jekyll-paginate","jekyll-sitemap"]
 paginate: 5
 paginate_path: "page:num"
 
+comments: true
+
 navigation:
  - title: Home
    url: /index.html
