@@ -9,9 +9,13 @@ I've been lucky enough to speak at a number of conferences and user groups aroun
 
 Below you'll find links to my talks, some with video.
 
+I've not quite eradicated the "erms" from my presentations, maybe one day.
+
 ___
 
 # Docklands London Java User Group (November 2015) - Distributed Java Systems in Minutes with Hazelcast
+
+<iframe width="420" height="315" src="http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.mp4" frameborder="0" allowfullscreen></iframe>
 
 [Slides](http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.pdf)
 [Video](http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.mp4)
@@ -27,6 +31,8 @@ I also gave this talk at 1 other user group :-
 ___
 
 # Devoxx UK 2015 : Gimme Caching - The Distributed JCache(JSR107) Way
+
+<iframe width="420" height="315" src="https://www.parleys.com/tutorial/gimme-caching-distributed-jcache-jsr107-way" frameborder="0" allowfullscreen></iframe>
 
 [Parleys Video](https://www.parleys.com/tutorial/gimme-caching-distributed-jcache-jsr107-way)
 
@@ -47,6 +53,8 @@ I also gave this talk at 2 other conferences :-
 ___
 
 # Devoxx UK 2014 : High Performance In-Memory Java with Open Source
+
+<iframe width="420" height="315" src="https://www.parleys.com/tutorial/high-performance-in-memory-java-open-source" frameborder="0" allowfullscreen></iframe>
 
 [PowerPoint Slides](https://www.parleys.com/tutorial/high-performance-in-memory-java-open-source)
 [Parleys Video](https://www.parleys.com/tutorial/high-performance-in-memory-java-open-source)
