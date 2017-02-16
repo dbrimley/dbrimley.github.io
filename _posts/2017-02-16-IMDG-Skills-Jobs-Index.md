@@ -27,6 +27,11 @@ This shows that the Granddaddy of IMDG, Oracle Coherence wins closely followed b
 
 ![IMDG Skills Count](/assets/img/skills-in-bio.png)
 
+Notes : LinkedIn Search for UK jobs using product keywords. Where a product is known by 2 names results have been combined.  This could advantage these products as the same job may be double counted.
+ There could be duplicate entries from multiple agencies listing same job.
+
+Search conducted on 16th February 2017
+
 ### IMDG Product Job Listings
 
 This is the big one for me, is there enough work out there? Are organisations going to need my skills?  The strange thing here is that Oracle Coherence dips quite a bit after the good results in the skills count,  I'm not sure what this indicates.  It could mean that the Coherence people are happy in their jobs and not moving or maybe there's not much new development going on. I would imagine some analysis of Coherence Bios might reveal if people are still working in this area.
@@ -37,7 +42,11 @@ I'm happy to see that Hazelcast has a big requirement for jobs, also Gemfire one
 
 I'm based in the UK, that has quite a low set of numbers so I've also included USA jobs listed.
 
-![UK IMDG Jobs](/assets/img/jobs-in-uk.png)
+![UK IMDG Jobs](/assets/img/uk-jobs-count.png)
+
+![UK IMDG Jobs](/assets/img/uk-jobs-bar-count.png)
+
+![UK IMDG Jobs](/assets/img/uk-jobs-percentage.png)
 
 ### Conclusion
 
