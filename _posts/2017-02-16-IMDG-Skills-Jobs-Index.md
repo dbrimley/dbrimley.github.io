@@ -5,7 +5,7 @@ modified:
 categories: blog
 excerpt: I ran across a LinkedIn post yesterday from 451 Research, they were updating their NoSQL Skills index at the request of a poster.  It was a pretty simple thing, that was based on the counts of a few different LinkedIn Searches on skills mentioned in peoples bios.  It had the usual suspects like MongoDB, Redis & Couchbase.  However, there wasn't anything regarding IMDG (In Memory Data Grids). 
 comments: true
-image: skills-in-bio.png
+image: careers.jpg
 date: 2017-02-16T13:33:13+00:00
 ---
 
