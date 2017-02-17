@@ -15,10 +15,7 @@ ___
 
 # Docklands London Java User Group (November 2015) - Distributed Java Systems in Minutes with Hazelcast
 
-<iframe width="420" height="315" src="http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.mp4" frameborder="0" allowfullscreen></iframe>
-
-[Slides](http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.pdf)
-[Video](http://www.docklandsljc.uk/presentations/2015/DavidBrimley-Hazelcast.mp4)
+[Video](https://www.infoq.com/presentations/hazelcast-distributed-system)
 
 Do you want to have quick access to a Java Map that can store terabytes of data? How about if we make the Map partitioned across multiple JVM for fault tolerance and scalability? We’ll also make it in-memory so access is fast.
 

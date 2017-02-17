@@ -49,7 +49,7 @@ Of the two Apache IMDG projects it looks like Gemfire is going strong in terms o
 
 ![USA IMDG Jobs](/assets/img/usa-jobs-pie.png)
 
-I'm based in the UK, so I was also interested in the UK job market...
+I'm based in the UK, so I was also interested in the UK job market.  The number of jobs in general listed here are a lot lower.  I think this is because the UK relies more on other job sites like JobServe.
 
 ![UK IMDG Jobs](/assets/img/uk-jobs-table.png)
 
