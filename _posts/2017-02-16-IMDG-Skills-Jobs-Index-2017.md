@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "IMDG Skills and Jobs Index"
+title: "IMDG Skills and Jobs Index 2017"
 modified:
 categories: blog
 excerpt: I ran across a LinkedIn post yesterday from 451 Research, they were updating their NoSQL Skills index at the request of a poster.  It was a pretty simple thing that was based on the counts of a few different LinkedIn Searches, things like the number of profiles that mentioned an IMDG product.  It had the usual suspects like MongoDB, Redis & Couchbase.  However, there wasn't anything regarding IMDG (In Memory Data Grids). 
